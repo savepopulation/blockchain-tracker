@@ -51,6 +51,9 @@ class HomeFragmentEspressoTest {
         activityTestRule.activity.setFragment(homeFragment)
     }
 
+    /**
+     * Test for checking if we show progress bar while fetching market data.
+     */
     @Test
     fun ensureProgressVisiblityWhenFetchingMarketData() {
         val fetchingBean = UiDataBean.fetching(null)
@@ -58,6 +61,9 @@ class HomeFragmentEspressoTest {
         onView(withId(R.id.transactionDataProgress)).check(matches(isDisplayed()))
     }
 
+    /**
+     * Test for checking if we disable week spinner to avoid multiple requests while fetching data.
+     */
     @Test
     fun ensureOnlyOneRequestWhenFetchingMarketData() {
         val fetchingBean = UiDataBean.fetching(null)
@@ -65,6 +71,9 @@ class HomeFragmentEspressoTest {
         onView(withId(R.id.transactionDataProgress)).check(matches(not(isClickable())))
     }
 
+    /**
+     * Tests if we hide chart while fetching market data.
+     */
     @Test
     fun ensureChartIsNotVisibleWhenFatchingData() {
         val fetchingBean = UiDataBean.fetching(null)
@@ -72,6 +81,9 @@ class HomeFragmentEspressoTest {
         onView(withId(R.id.transactionDataProgress)).check(matches(not(isDisplayed())))
     }
 
+    /**
+     * Tests if we show chart when we have available market data values.
+     */
     @Test
     fun ensureChartIsVisibleWhenMarketValuesAvailable() {
         val marketValCount = 20
@@ -80,6 +92,9 @@ class HomeFragmentEspressoTest {
         onView(withId(R.id.transactionDataProgress)).check(matches(isDisplayed()))
     }
 
+    /**
+     * Tests if we can show a toast message on an api or business error.
+     */
     @Test
     fun ensureToastMessageIsShownToNotifyUser() {
         val errorMessage = "Unknown Error"
