@@ -16,10 +16,10 @@ import com.google.gson.annotations.SerializedName
   "values":
  */
 
-data class DefaultResponse<T>(@SerializedName("status") val status: String?,
-                              @SerializedName("name") val name: String?,
-                              @SerializedName("unit") val unit: String?,
-                              @SerializedName("period") val period: String?,
-                              @SerializedName("description") val desc: String?,
+data class DefaultResponse<T>(@SerializedName("status") val status: String? = null,
+                              @SerializedName("name") val name: String? = null,
+                              @SerializedName("unit") val unit: String? = null,
+                              @SerializedName("period") val period: String? = null,
+                              @SerializedName("description") val desc: String? = null,
                               @SerializedName("values") val data: T)
 

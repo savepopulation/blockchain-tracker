@@ -66,6 +66,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    testImplementation 'org.mockito:mockito-core:2.10.0'
+    testImplementation 'android.arch.core:core-testing:1.1.0'
+
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.loggingInterceptorVersion"
@@ -85,9 +88,6 @@ dependencies {
     // Rx
     implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
     implementation "io.reactivex.rxjava2:rxkotlin:$rootProject.ext.rxKotlinVersion"
-
-    // Data Binding
-    kapt "com.android.databinding:compiler:$rootProject.ext.dataBindingCompilerVersion"
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 }

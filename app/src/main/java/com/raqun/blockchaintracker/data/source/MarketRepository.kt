@@ -13,7 +13,7 @@ import javax.inject.Named
 /**
  * Created by tyln on 29.08.2018.
  */
-class MarketRepository @Inject constructor(@Named("marketRemoteDataSource") private val marketRemoteDataSource: MarketDataSource)
+open class MarketRepository @Inject constructor(@Named("marketRemoteDataSource") private val marketRemoteDataSource: MarketDataSource)
     : MarketDataSource {
 
     override fun getWeeklyBlockchainTransactionData(weeks: String): Single<DefaultResponse<List<MarketVal>>> =

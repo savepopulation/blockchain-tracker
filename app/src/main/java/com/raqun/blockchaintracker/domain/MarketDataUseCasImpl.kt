@@ -15,6 +15,10 @@ class MarketDataUseCasImpl @Inject constructor(@Named("marketRepository") privat
 
     override fun fetchWeeklyMarketTransactionData(week: Int): Observable<MarketVal> {
 
+        if (week < 0) {
+            return Observable.error(IllegalArgumentException("Week cannot be lower than 0"))
+        }
+
         val weeksQuery = with(StringBuilder()) {
             append(week)
             append(WEEK_QUERY_PARAM_SUFFIX)

@@ -29,7 +29,7 @@ abstract class BinderFragment<VB : ViewDataBinding, VM : ViewModel> : BaseFragme
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
+        binding = DataBindingUtil.inflate(inflater!!, getLayoutRes(), container, false)
         initView()
         return binding.root
     }
