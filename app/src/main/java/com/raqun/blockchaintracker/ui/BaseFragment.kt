@@ -33,7 +33,7 @@ abstract class BaseFragment : Fragment(), BaseView, LifecycleRegistryOwner {
             AndroidSupportInjection.inject(this)
         }
         super.onCreate(savedInstanceState)
-        navigationController = NavigationController(activity)
+        navigationController = NavigationController(activity!!)
         if (getMenuRes() != Constants.NO_RES) {
             setHasOptionsMenu(true)
         }
@@ -46,8 +46,8 @@ abstract class BaseFragment : Fragment(), BaseView, LifecycleRegistryOwner {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(getLayoutRes(), null, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(getLayoutRes(), null, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -63,7 +63,7 @@ abstract class BaseFragment : Fragment(), BaseView, LifecycleRegistryOwner {
     }
 
     override fun onError(e: Error?) {
-        activity.alert(e?.message)
+        activity!!.alert(e?.message)
     }
 
     protected fun setActivityTitle(title: String) {
@@ -80,7 +80,7 @@ abstract class BaseFragment : Fragment(), BaseView, LifecycleRegistryOwner {
     @StringRes
     protected open fun getTitleRes(): Int = R.string.app_name
 
-    fun getApplication(): Application = activity.application
+    fun getApplication(): Application = activity!!.application
 
     fun getApplicationContext(): Context = getApplication().applicationContext
 }

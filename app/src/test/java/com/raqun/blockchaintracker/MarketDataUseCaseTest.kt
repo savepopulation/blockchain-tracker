@@ -3,16 +3,13 @@ package com.raqun.blockchaintracker
 import com.raqun.blockchaintracker.api.response.DefaultResponse
 import com.raqun.blockchaintracker.data.source.MarketRepository
 import com.raqun.blockchaintracker.domain.MarketDataUseCasImpl
-import com.raqun.blockchaintracker.domain.MarketDataUseCase
 import com.raqun.blockchaintracker.model.MarketVal
+import com.raqun.blockchaintracker.util.UnitTestsDataProvider
 import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.rxkotlin.toSingle
 import org.junit.Test
-import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mockito
-import kotlin.math.max
 
 class MarketDataUseCaseTest {
 
@@ -28,7 +25,7 @@ class MarketDataUseCaseTest {
         val maxTransactionItemCount = 10
 
         Mockito.`when`(marketRepository.getWeeklyBlockchainTransactionData(anyString()))
-                .thenReturn(Single.just(DefaultResponse(data = TestDataProvider.providMarketValues(maxTransactionItemCount))))
+                .thenReturn(Single.just(DefaultResponse(data = UnitTestsDataProvider.providMarketValues(maxTransactionItemCount))))
 
 
         marketDataUseCase.fetchWeeklyMarketTransactionData(week)
@@ -64,10 +61,10 @@ class MarketDataUseCaseTest {
     fun testMarketDataUseCase_getWeeklyBlockchainTransactionData_NegativeTransactionNumbers() {
         val week = 4
         val maxTransactionItemCount = 10
-        val suitableValues = TestDataProvider.providMarketValues(maxTransactionItemCount)
+        val suitableValues = UnitTestsDataProvider.providMarketValues(maxTransactionItemCount)
 
         Mockito.`when`(marketRepository.getWeeklyBlockchainTransactionData(anyString()))
-                .thenReturn(Single.just(DefaultResponse(data = TestDataProvider.provideMarketValuesWithNegativeTransactionNumbers(suitableValues))))
+                .thenReturn(Single.just(DefaultResponse(data = UnitTestsDataProvider.provideMarketValuesWithNegativeTransactionNumbers(suitableValues))))
 
         marketDataUseCase.fetchWeeklyMarketTransactionData(week)
                 .test()

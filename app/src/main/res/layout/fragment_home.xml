@@ -53,6 +53,7 @@
                         android:entries="@array/week_selection_array" />
 
                     <ProgressBar
+                        android:id="@+id/transactionDataProgress"
                         style="@style/Base.Widget.AppCompat.ProgressBar"
                         android:layout_width="24dp"
                         android:layout_height="24dp"

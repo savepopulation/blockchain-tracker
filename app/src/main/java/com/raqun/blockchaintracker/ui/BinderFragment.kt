@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
+import android.support.annotation.VisibleForTesting
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,10 +17,14 @@ import javax.inject.Inject
  */
 abstract class BinderFragment<VB : ViewDataBinding, VM : ViewModel> : BaseFragment() {
 
+    @VisibleForTesting
     @Inject
-    protected lateinit var vmFactory: ViewModelProvider.Factory
+    lateinit var vmFactory: ViewModelProvider.Factory
+
     protected lateinit var binding: VB
-    protected lateinit var viewModel: VM
+
+    @VisibleForTesting
+    lateinit var viewModel: VM
 
     abstract fun getModelClass(): Class<VM>
 
@@ -28,8 +33,8 @@ abstract class BinderFragment<VB : ViewDataBinding, VM : ViewModel> : BaseFragme
         viewModel = ViewModelProviders.of(this, vmFactory).get(getModelClass())
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater!!, getLayoutRes(), container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
         initView()
         return binding.root
     }

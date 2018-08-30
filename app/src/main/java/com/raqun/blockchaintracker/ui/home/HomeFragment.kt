@@ -28,7 +28,7 @@ import com.raqun.blockchaintracker.util.NonFloatValueFormatter
 /**
  * Created by tyln on 29.08.2018.
  */
-class HomeFragment : BinderFragment<FragmentHomeBinding, HomeViewModel>(), HomeView {
+open class HomeFragment : BinderFragment<FragmentHomeBinding, HomeViewModel>(), HomeView {
 
     override fun getModelClass(): Class<HomeViewModel> = HomeViewModel::class.java
 
@@ -47,9 +47,9 @@ class HomeFragment : BinderFragment<FragmentHomeBinding, HomeViewModel>(), HomeV
             }
         }
 
-        viewModel.marketLiveData().observeApi(this, {
+        viewModel.marketLiveData().observeApi(this) {
             binding.marketValuesDataBean = it
-        })
+        }
     }
 
     override fun initView() {
