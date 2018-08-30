@@ -40,4 +40,8 @@ ext {
     okHttpVersion = '3.10.0'
     espressoVersion = "2.2.2"
     mockitoVersion = '2.18.3'
+    mpPieChartVersion = '3.0.3'
+    archCoreTestingVersion = '1.1.1'
+    testRulesVersion = '1.0.2'
+    testRunnerVersion = '1.0.2'
 }
