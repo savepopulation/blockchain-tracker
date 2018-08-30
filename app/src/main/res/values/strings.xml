@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Blockchain Market</string>
+
+    <string name="info_text_no_content">No content available</string>
+    <string name="chart_label">Weekly Blockchain Transaction Numbers</string>
+
+    <string-array name="week_selection_array">
+        <item>1 Week</item>
+        <item>2 Week</item>
+        <item>3 Week</item>
+        <item>4 Week</item>
+    </string-array>
+
+</resources>

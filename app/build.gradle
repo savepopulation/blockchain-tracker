@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.raqun.blockchaintracker"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions("default")
+
+    productFlavors {
+
+        prod {
+            dimension("default")
+            buildConfigField('String', 'BASE_URL', '"https://api.blockchain.info/"')
+        }
+
+        dev {
+            dimension("default")
+            applicationIdSuffix ".dev"
+            versionNameSuffix ".dev"
+            buildConfigField('String', 'BASE_URL', '"https://api.blockchain.info/"')
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+
+    // Default
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.loggingInterceptorVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.gsonVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okHttpVersion"
+
+    // Dagger
+    implementation "com.google.dagger:dagger-android-support:$rootProject.ext.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.ext.daggerVersion"
+
+    // Arch Components
+    implementation "android.arch.lifecycle:runtime:$rootProject.ext.archLifecycleVersion"
+    implementation "android.arch.lifecycle:extensions:$rootProject.ext.archExtensionsVersion"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rootProject.ext.rxKotlinVersion"
+
+    // Data Binding
+    kapt "com.android.databinding:compiler:$rootProject.ext.dataBindingCompilerVersion"
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+}
