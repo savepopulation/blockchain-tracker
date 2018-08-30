@@ -10,6 +10,9 @@ class UnitTestsDataProvider private constructor() {
         private const val timeSampInterval = 100
         private const val transactionInterval = 1000
 
+        /**
+         * Creates suitable market values for app.
+         */
         fun providMarketValues(count: Int = 10): List<MarketVal> {
             val values = ArrayList<MarketVal>()
             for (i in 0..count) {
@@ -19,6 +22,11 @@ class UnitTestsDataProvider private constructor() {
             return values
         }
 
+        /**
+         * Creates suitable + unsuitable market values for app.
+         * In MarketDataUseCase negative transaction values filtered.
+         * Thus we add some negative transaction values to see if we can actually filter.
+         */
         fun provideMarketValuesWithNegativeTransactionNumbers(marketValues: List<MarketVal>): List<MarketVal> {
             val values = ArrayList<MarketVal>()
             values.addAll(marketValues)

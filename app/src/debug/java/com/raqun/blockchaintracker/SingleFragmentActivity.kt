@@ -7,6 +7,10 @@ import android.support.annotation.VisibleForTesting
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 
+/**
+ * This is a Single fragment activity to use in Espresso tests for ui testing of Fragments
+ */
+
 @VisibleForTesting
 class SingleFragmentActivity : AppCompatActivity() {
 
