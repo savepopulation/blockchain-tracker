@@ -20,9 +20,8 @@ import dagger.android.support.HasSupportFragmentInjector
 /**
  * Created by tyln on 29.08.2018.
  */
-abstract class BaseFragment : Fragment(), BaseView, LifecycleRegistryOwner {
+abstract class BaseFragment : Fragment(), BaseView{
 
-    private val lifecycleRegistry: LifecycleRegistry = LifecycleRegistry(this)
     protected var navigationController: NavigationController? = null
 
     @LayoutRes
@@ -71,8 +70,6 @@ abstract class BaseFragment : Fragment(), BaseView, LifecycleRegistryOwner {
             (activity as BaseActivity).setScreenTitle(title)
         }
     }
-
-    override fun getLifecycle(): LifecycleRegistry = lifecycleRegistry
 
     @MenuRes
     protected open fun getMenuRes(): Int = Constants.NO_RES
