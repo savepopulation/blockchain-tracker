@@ -14,4 +14,8 @@ class MarketRemoteDataSource @Inject constructor(private val trackerServices: Tr
 
     override fun getWeeklyBlockchainTransactionData(weeks: String): Single<DefaultResponse<List<MarketVal>>> =
             trackerServices.getWeeklyBlockchainTransactionData(weeks)
+
+    companion object {
+        const val NAME = "marketRemoteDataSource"
+    }
 }

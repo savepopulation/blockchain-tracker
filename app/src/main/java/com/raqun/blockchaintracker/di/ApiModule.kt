@@ -24,7 +24,7 @@ internal class ApiModule {
 
     @Provides
     @Singleton
-    @Named("url")
+    @Named(NAME_URL)
     fun provideBaseUrl(): String = BuildConfig.BASE_URL
 
     @Provides
@@ -49,7 +49,7 @@ internal class ApiModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(@Named("url") baseUrl: String, client: OkHttpClient): Retrofit =
+    fun provideRetrofit(@Named(NAME_URL) baseUrl: String, client: OkHttpClient): Retrofit =
             with(Retrofit.Builder()) {
                 baseUrl(baseUrl)
                 client(client)
@@ -61,4 +61,8 @@ internal class ApiModule {
     @Provides
     @Singleton
     fun provideApiServices(retrofit: Retrofit): TrackerServices = retrofit.create(TrackerServices::class.java)
+
+    companion object {
+        private const val NAME_URL = "url"
+    }
 }

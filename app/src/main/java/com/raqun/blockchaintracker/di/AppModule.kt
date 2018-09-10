@@ -31,13 +31,13 @@ internal class AppModule {
 
     @Provides
     @Singleton
-    @Named("marketRemoteDataSource")
+    @Named(MarketRemoteDataSource.NAME)
     fun provideMarketRemoteDataSource(trackerServices: TrackerServices): MarketDataSource =
             MarketRemoteDataSource(trackerServices)
 
     @Provides
     @Singleton
-    @Named("marketRepository")
-    fun provideMarketRepository(@Named("marketRemoteDataSource") marketRemoteDataSource: MarketDataSource): MarketDataSource =
+    @Named(MarketRepository.NAME)
+    fun provideMarketRepository(@Named(MarketRemoteDataSource.NAME) marketRemoteDataSource: MarketDataSource): MarketDataSource =
             MarketRepository(marketRemoteDataSource)
 }

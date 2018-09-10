@@ -10,7 +10,7 @@ import javax.inject.Named
 /**
  * Created by tyln on 29.08.2018.
  */
-class MarketDataUseCasImpl @Inject constructor(@Named("marketRepository") private val marketRepository: MarketDataSource)
+class MarketDataUseCasImpl @Inject constructor(@Named(MarketRepository.NAME) private val marketRepository: MarketDataSource)
     : MarketDataUseCase {
 
     override fun fetchWeeklyMarketTransactionData(week: Int): Observable<MarketVal> {
