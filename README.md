@@ -13,3 +13,7 @@ A blockchain market tracking app. Example implementation of reactive clean archi
 - Espresso Test<br>
 - Unit Test<br>
 - Rotation Support
+
+## Screenshots
+<img src="https://github.com/savepopulation/blockchain-tracker/blob/master/art/home_screen.jpg?raw=true"
+height="384" width="210">
